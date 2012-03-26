@@ -5,6 +5,9 @@ This code was written for the UK National Archives #hackon12 (Hack on the record
 
 The dataset used is a CSV of letters written in the Middle Ages.
 
+## Demo
+http://timhodson.com/ancient-correspondence
+
 ## Installation
 clone the repo and if you have python installed, you can view the site using a quick and simple http server which will server all the files in and below the directory that you run the server in.
 
