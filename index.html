@@ -1,0 +1,102 @@
+<!DOCTYPE html >
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Ancient Correspondence >> Who influences Who?</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="bootstrap-responsive.min.css" type="text/css">
+	<link rel="stylesheet" href="bootstrap.min.css" type="text/css">
+
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+  <script src="js/jquery-1.6.2.min.js"></script>
+  <!-- <script src="js/bootstrap.min.js" ></script> -->
+
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11144067-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Who wrote to whom?</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="#about">About</a></li>
+              <li class="active"><a href="http://timhodson.com">timhodson.com</a></li>
+              <li><a href="http://twitter.com/timhodson">@timhodson</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+  <div class="page-header patrchment well">
+    <h2>Who?</h2> <div class="detail" id="who">Mouse over a spot for detail</div>
+    <h2>What?</h2> <div class="detail" id="what"></div>
+  </div>
+
+  <div id="sidebar">
+    <p>Ancient Correspondence (1175-1538) (SC 1)</p><p>Catalogue details of a selection of letters from the 12th to the 16th centuries giving details of writers, recipients and the subject of their correspondence. Dataset Downloaded from <a href="http://labs.nationalarchives.gov.uk/wordpress/index.php/2011/07/datasets/#more-442" >National Archives labs</a></p>
+
+
+    <p><b>black</b> spots wrote to <b style="color:red;">red</b> spots</p>
+    <p>Each edge (arrow) represents a letter. Watch how the black spots flock to people who might have some influence.</p>
+    <p><b>The node movement will freeze after 20 seconds, after that use the red button to freeze or unfreese the movement manually.</b></p>
+    <button id="toggle" class="btn btn-danger disabled">Freeze</button>
+  </div>
+
+  <canvas id="viewport" width="750" height="600"></canvas>
+
+<div class="hero-unit">
+  <h2><a name="about"></a>Method</h2>
+    <ol>
+      <li>Original data file was a four column CSV, the second column contained a topic and scope statement, which was split into parts based on the pattern "{person 1} to {person 2}: scope note". Naturally this is not very systematic as the data had entries which didn't fit the pattern.</li>
+      <li>I could have spent some time looking for obvious spelling differences and tidying up the data, but I will leave that for people with greater knowledge of the Middle Ages.</li>
+      <li>A rough and ready conversion to an RDF model to capture the relationships between a letter, who wrote it and to whom it was sent.</li>
+      <li><a href="arborjs.org">arbor.js</a> was used to build the visualisation of the graph. any nodes which had unkown or bad data are still visualised.</li>
+      <li>Final step was to throw some prettiness at it with <a href="http://twitter.github.com/bootstrap">bootstrap</a> </li>
+    </ol>
+    <h2>What could be better?</h2>
+    <ol>
+      <li>Where one person has written to (or recieved from) multiple people, only 1 of the possible letter details are shown when hovering over the node.  This is because the from (or to) nodes will have been overwritten by the last letter read from the data.</li>
+      <li>If the names of the people writing the letter could be acurately matched to their Name Authority FIle records, it would mean a better picture of the relationships.  For example <i>Hubert de Burgh, Justicar</i> also spelt <i>Hubert de Burgh, Justicer</i>. My guess is these are one and the same.</li>
+      <li>Full text of the letters would be nice for some entity extraction, there may be mentions in the letters of other people (one type of entity to look for at least). Though I guess there would be issues with this because of the language used in the originals.</li>
+      <li>At the moment the data is not in Kasabi, I plan to do this and use the SOLR search indexes to provide me with some facets that I can use to perhaps add more context navigation to the user interface.</li>
+    </ol>
+</div>
+</div>
+
+  <!-- run from the minified library file: -->
+  <script src="js/arbor.js"></script>  
+
+  <!-- run the visualisation -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

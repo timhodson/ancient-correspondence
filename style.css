@@ -1,0 +1,14 @@
+body{
+  margin:0;
+  padding:20px;
+  font:12px/17px Arial, sans-serif;
+  background:#f9f9f9;
+}
+
+.page-header{ height:180px; z-index:0}
+.page-header i {font-size:1.3em;}
+
+#sidebar { float:right; width:150px;}
+
+.detail { font-size:1.2em;  }
+
